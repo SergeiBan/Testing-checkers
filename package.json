@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "puppeteer": "^13.0.1"
+  },
+  "name": "checkerstests",
+  "version": "1.0.0",
+  "description": "Tests for frontend",
+  "main": "frontend_tests.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergei Banshchikov",
+  "license": "ISC"
+}
