@@ -26,6 +26,23 @@ async function testMovingAheadWhite(page) {
     
 }
 
+async function testMovingAheadWhiteWrong(page) {
+    const initialPoint = 'button[data-y="6"][data-x="7"]';
+    await page.waitForSelector(`${initialPoint}`);
+    const initialPosition = await page.$(`${initialPoint}`);
+    await initialPosition.click();
+    
+    const newPoint = 'button[data-y="5"][data-x="7"]';
+    await page.waitForSelector(`${newPoint}`);
+    const newPosition = await page.$(`${newPoint}`);
+    await newPosition.click();
+    
+    const oldClass = (await (await initialPosition.getProperty('className')).jsonValue());
+    const newClass = (await (await newPosition.getProperty('className')).jsonValue());
+    console.log(newClass === "V" && oldClass === "W" ? "Move ahead in wrong direction (White): Success" : "Move ahead in wrong direction (White): Failure");
+    
+}
+
 async function testMovingAheadBlack(page) {
     const initialPoint = 'button[data-y="3"][data-x="6"]';
     await page.waitForSelector(`${initialPoint}`);
@@ -44,12 +61,12 @@ async function testMovingAheadBlack(page) {
 
 async function run() {
     const [browser, page] = await getPage();
-
+    await testMovingAheadWhiteWrong(page);
     await testMovingAheadWhite(page);
     try {
         await testMovingAheadBlack(page);
     } catch {
-        console.log("testMovingAheadBlack is broken");
+        console.log("#2 testMovingAheadBlack is broken");
     }
     await browser.close();
     
