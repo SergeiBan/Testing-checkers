@@ -1,12 +1,11 @@
 {
   "dependencies": {
-    "puppeteer": "^13.0.1"
+    "puppeteer": "^13.1.0"
   },
   "name": "checkerstests",
   "version": "1.0.0",
   "description": "Tests for frontend",
   "main": "frontend_tests.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
